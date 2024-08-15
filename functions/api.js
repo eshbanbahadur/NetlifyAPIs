@@ -13,7 +13,7 @@ const app = express();
 // app.use('/.netlify/functions/api/student', studentRoutes);
 // app.use('/.netlify/functions/api/take', takeRoutes);
 
-Your existing Express routes
+//Your existing Express routes
 app.get('/.netlify/functions/api/course/all', (req, res) => {
   res.json({ message: 'Hello World' });
 });
