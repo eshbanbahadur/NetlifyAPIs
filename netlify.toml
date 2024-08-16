@@ -1,11 +1,24 @@
 [build]
   functions = "functions"
-  
+  command = "npm run build"  # Uncomment if you have a build step
+
+[build.environment]
+  NODE_VERSION = "18"  # Adjust to your Node.js version if different
+
 [functions]
   included_files = ["routes/**/*.js", "controllers/**/*.js"]
-  timeout = 20  # Increase if your functions are timing out (max 26 seconds)
+
+# Correct way to set the timeout
+[[functions]]
+  timeout = 20
 
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/api/:splat"
   status = 200
+
+# Uncomment the following if you need CORS headers
+# [[headers]]
+#   for = "/*"
+#     [headers.values]
+#     Access-Control-Allow-Origin = "*"
