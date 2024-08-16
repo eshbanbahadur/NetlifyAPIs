@@ -8,7 +8,12 @@ router.get('/test-route', (req, res) => {
   res.json({ message: 'Course route working!' });
 });
 
+router.get('/all', (req, res) => {
+  console.log('Accessed /all route');
+  courseController.getAllCourse(req, res);
+});
+
 // Define the routes
-router.get('/all', courseController.getAllCourse);
+//router.get('/all', courseController.getAllCourse);
 
 module.exports = router;
