@@ -9,10 +9,6 @@
   included_files = ["routes/**/*.js", "controllers/**/*.js"]
   node_bundler = "esbuild"  # Optional: specify the bundler if needed
 
-# Configure timeout for all functions
-[[functions]]
-  timeout = 20
-
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/api/:splat"
