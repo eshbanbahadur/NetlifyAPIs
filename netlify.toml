@@ -1,15 +1,14 @@
 [build]
   functions = "functions"
-  command = "npm run build"  # Uncomment if you have a build step
+  # command = "npm run build"  # Uncomment if you have a build step
 
 [build.environment]
   NODE_VERSION = "18"  # Adjust to your Node.js version if different
 
 [functions]
   included_files = ["routes/**/*.js", "controllers/**/*.js"]
-
-# Correct way to set the timeout
-[[functions]]
+  # Set the timeout for all functions
+  node_bundler = "esbuild"  # Optional: specify the bundler if needed
   timeout = 20
 
 [[redirects]]
