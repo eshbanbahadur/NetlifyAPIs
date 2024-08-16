@@ -7,8 +7,10 @@
 
 [functions]
   included_files = ["routes/**/*.js", "controllers/**/*.js"]
-  # Set the timeout for all functions
   node_bundler = "esbuild"  # Optional: specify the bundler if needed
+
+# Configure timeout for all functions
+[[functions]]
   timeout = 20
 
 [[redirects]]
