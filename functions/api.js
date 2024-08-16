@@ -14,8 +14,12 @@ const app = express();
 // app.use('/.netlify/functions/api/take', takeRoutes);
 
 //Your existing Express routes
-app.get('/.netlify/functions/api/course/all', (req, res) => {
-  res.json({ message: 'Hello World' });
+// app.get('/.netlify/functions/api/course/all', (req, res) => {
+//   res.json({ message: 'Hello World' });
+
+  // Import routes from the root-level routes folder
+const courseRoutes = require('../routes/courseRoutes'); 
+app.use('/.netlify/functions/api/course', courseRoutes);
 });
 
 module.exports.handler = serverless(app);
