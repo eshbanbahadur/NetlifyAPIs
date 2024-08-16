@@ -23,7 +23,7 @@ res.status(201).json({course:courseData});
     }
 };
 // get api
-exports.getAllCourse = async (req, res) =>{
+/*exports.getAllCourse = async (req, res) =>{
     try{
 const courseData = await Course.find();
 res.status(200).json({course:courseData});
@@ -31,6 +31,42 @@ res.status(200).json({course:courseData});
 res.status(500).json({message:error.massage});
     };
 };
+*/
+
+//updated by eshban//
+exports.getAllCourse = async (req, res) => {
+    console.log('getAllCourse method called');
+
+    try {
+        console.log('Attempting to fetch all courses from the database...');
+        
+        // Start a timer to measure query performance
+        console.time('Database query time');
+
+        const courseData = await Course.find();
+
+        // Stop the timer and log the time taken
+        console.timeEnd('Database query time');
+
+        // Log the number of courses fetched
+        console.log(`Fetched ${courseData.length} courses from the database`);
+
+        // Send the courses as a response
+        res.status(200).json({ course: courseData });
+    } catch (error) {
+        // Log the error details
+        console.error('Error occurred in getAllCourse:', error);
+        
+        // Send an error response with more detailed error information
+        res.status(500).json({ message: error.message || 'Internal Server Error' });
+    }
+};
+
+
+
+
+
+
 exports.getCourseById = async (req, res) => {
     try {
       const courseId = req.params.id;
