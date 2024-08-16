@@ -8,9 +8,13 @@ router.get('/test-route', (req, res) => {
   res.json({ message: 'Course route working!' });
 });
 
-router.get('/all', (req, res) => {
-  console.log('Accessed /all route');
-  courseController.getAllCourse(req, res);
+router.get('/all', async (req, res, next) => {
+  try {
+    const courses = await courseController.getAllCourse();
+    res.json(courses);
+  } catch (error) {
+    next(error);
+  }
 });
 
 // Define the routes
